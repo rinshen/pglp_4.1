@@ -3,30 +3,32 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>fr.uvsq.rinshen</groupId>
-  <artifactId>ex32</artifactId>
+  <artifactId>ex41</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>ex32</name>
+  <name>ex41</name>
   <url>http://maven.apache.org</url>
 
   <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+   <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
   <reporting>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-checkstyle-plugin</artifactId>
-        <version>3.1.0</version>
-        <reportSets>
-          <reportSet>
-            <reports>
-              <report>checkstyle</report>
-            </reports>
-          </reportSet>
-        </reportSets>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.1</version>
+        <configuration>
+    	  <source>1.8</source>
+     	  <target>1.8</target>
+   		</configuration>
+      </plugin>
+  	  <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jxr-plugin</artifactId>
+        <version>2.3</version>
       </plugin>
       <plugin>
 		<groupId>com.github.spotbugs</groupId>
@@ -36,6 +38,18 @@
     </plugins>
   </reporting>
 
+  <build>
+  	<plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-checkstyle-plugin</artifactId>
+        <version>3.1.1</version>
+        <configuration>
+    	  <configLocation>checkstyle.xml</configLocation>
+   		</configuration>
+      </plugin>
+  	</plugins>
+  </build>
 
   <dependencies>
     <dependency>

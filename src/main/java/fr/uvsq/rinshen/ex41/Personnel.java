@@ -3,32 +3,29 @@ package fr.uvsq.rinshen.ex41;
 import java.util.ArrayList;
 import java.time.LocalDate;
 import java.time.Month;
-/**
- * Hello world!
- *
- */
+
 public final class Personnel
 {
     private final String nom;
     private final String prenom;
     private final String fonction;
-    private final LocalDate date_naissance;
-    private final ArrayList<String> num_telephone;
+    private final LocalDate dateNaissance;
+    private final ArrayList<String> numTelephone;
     
     public static class Builder{
     	private String nom;
         private String prenom;
         private String fonction;
-        private LocalDate date_naissance;
-        private ArrayList<String> num_telephone;
+        private LocalDate dateNaissance;
+        private ArrayList<String> numTelephone;
         
         public Builder(String Nom, String Prenom) {
         	nom=Nom;
         	prenom=Prenom;
         	
-        	fonction="nom spécifiée";
-        	date_naissance=LocalDate.of(0, Month.JANUARY, 0);
-        	num_telephone=new ArrayList<String>();
+        	fonction="non spécifiée";
+        	dateNaissance=LocalDate.of(0, Month.JANUARY, 1);
+        	numTelephone=new ArrayList<String>();
         }
     	
         public Builder fonction(String Fonction) {
@@ -36,13 +33,13 @@ public final class Personnel
         	return this;
         }
         
-        public Builder date_naissance(int jour, Month mois, int annee) {
-        	date_naissance=LocalDate.of(annee, mois, jour);
+        public Builder dateNaissance(int jour, Month mois, int annee) {
+        	dateNaissance=LocalDate.of(annee, mois, jour);
         	return this;
         }
         
-        public Builder num_telephone(String numero) {
-        	num_telephone.add(numero);
+        public Builder numTelephone(String numero) {
+        	numTelephone.add(numero);
         	return this;
         }
         
@@ -55,7 +52,51 @@ public final class Personnel
     	nom=builder.nom;
     	prenom=builder.prenom;
     	fonction=builder.fonction;
-    	date_naissance=builder.date_naissance;
-    	num_telephone=builder.num_telephone;
+    	dateNaissance=builder.dateNaissance;
+    	numTelephone=builder.numTelephone;
     }
+
+	public String getNom() {
+		return nom;
+	}
+
+	public String getPrenom() {
+		return prenom;
+	}
+
+	public String getFonction() {
+		return fonction;
+	}
+
+	public LocalDate getDateNaissance() {
+		return dateNaissance;
+	}
+
+	public ArrayList<String> getNumTelephone() {
+		return numTelephone;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (!(obj instanceof Personnel)) {
+			return false;
+		}
+		Personnel test = (Personnel)obj;
+		if (!this.numTelephone.equals(test.getNumTelephone())) {
+			return false;
+		}
+		if (!this.nom.equals(test.getNom())) {
+			return false;
+		}
+		if (!this.prenom.equals(test.getPrenom())) {
+			return false;
+		}
+		if (!this.fonction.equals(test.getFonction())) {
+			return false;
+		}
+		if (!this.dateNaissance.equals(test.getDateNaissance())) {
+			return false;
+		}
+		return true;
+	}
 }
