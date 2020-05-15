@@ -1,60 +1,68 @@
 package fr.uvsq.rinshen.ex41;
 
-import java.util.ArrayList;
 import java.time.LocalDate;
 import java.time.Month;
+import java.util.ArrayList;
 
-public final class Personnel
-{
-    private final String nom;
-    private final String prenom;
-    private final String fonction;
-    private final LocalDate dateNaissance;
-    private final ArrayList<String> numTelephone;
-    
-    public static class Builder{
-    	private String nom;
-        private String prenom;
-        private String fonction;
-        private LocalDate dateNaissance;
-        private ArrayList<String> numTelephone;
-        
-        public Builder(String Nom, String Prenom) {
-        	nom=Nom;
-        	prenom=Prenom;
-        	
-        	fonction="non spécifiée";
-        	dateNaissance=LocalDate.of(0, Month.JANUARY, 1);
-        	numTelephone=new ArrayList<String>();
-        }
-    	
-        public Builder fonction(String Fonction) {
-        	fonction=Fonction;
-        	return this;
-        }
-        
-        public Builder dateNaissance(int jour, Month mois, int annee) {
-        	dateNaissance=LocalDate.of(annee, mois, jour);
-        	return this;
-        }
-        
-        public Builder numTelephone(String numero) {
-        	numTelephone.add(numero);
-        	return this;
-        }
-        
-        public Personnel build() {
-        	return new Personnel(this);
-        }
-    }
-    
-    public Personnel(Builder builder) {
-    	nom=builder.nom;
-    	prenom=builder.prenom;
-    	fonction=builder.fonction;
-    	dateNaissance=builder.dateNaissance;
-    	numTelephone=builder.numTelephone;
-    }
+public final class Personnel {
+	private final String nom;
+	private final String prenom;
+	private final String fonction;
+	private final LocalDate dateNaissance;
+	private final ArrayList<String> numTelephone;
+
+	public static class Builder {
+		private String nom;
+		private String prenom;
+		private String fonction;
+		private LocalDate dateNaissance;
+		private ArrayList<String> numTelephone;
+
+		/**
+	     * Constructeur du builder de la classe personnel.
+	     * @param nom1 -> Nom de la personne
+	     * @param nom2 -> Prénom de la personne
+	     */
+		public Builder(String nom1, String nom2) {
+			nom = nom1;
+			prenom = nom2;
+
+			fonction = "non spécifiée";
+			dateNaissance = LocalDate.of(0, Month.JANUARY, 1);
+			numTelephone = new ArrayList<String>();
+		}
+
+		public Builder fonction(String role) {
+			fonction = role;
+			return this;
+		}
+
+		public Builder dateNaissance(int jour, Month mois, int annee) {
+			dateNaissance = LocalDate.of(annee, mois, jour);
+			return this;
+		}
+
+		public Builder numTelephone(String numero) {
+			numTelephone.add(numero);
+			return this;
+		}
+
+		public Personnel build() {
+			return new Personnel(this);
+		}
+	}
+
+	/**
+     * Constructeur de la classe Personnel.
+     * @param builder -> Builder permettant l'initialisaton de la classe
+     */
+	public Personnel(Builder builder) {
+		nom = builder.nom;
+		prenom = builder.prenom;
+		fonction = builder.fonction;
+		dateNaissance = builder.dateNaissance;
+		numTelephone = builder.numTelephone;
+	}
 
 	public String getNom() {
 		return nom;

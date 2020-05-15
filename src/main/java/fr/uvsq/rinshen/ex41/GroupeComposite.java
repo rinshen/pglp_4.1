@@ -2,13 +2,12 @@ package fr.uvsq.rinshen.ex41;
 
 import java.util.ArrayList;
 
-import fr.uvsq.rinshen.ex41.Groupe;
-
 public class GroupeComposite extends Groupe {
 	private ArrayList<Groupe> sousGroupes;
+	
 	public GroupeComposite() {
 		super();
-		sousGroupes=new ArrayList<Groupe>();
+		sousGroupes = new ArrayList<Groupe>();
 	}
 	
 	public void ajouteGroupe(Groupe groupe) {

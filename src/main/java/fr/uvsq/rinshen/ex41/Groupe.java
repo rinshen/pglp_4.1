@@ -1,14 +1,13 @@
 package fr.uvsq.rinshen.ex41;
 
-import java.util.ArrayList;
-
 import fr.uvsq.rinshen.ex41.Personnel;
+import java.util.ArrayList;
 
 public abstract class Groupe {
 	private ArrayList<Personnel> membres;
 	
 	public Groupe() {
-		membres=new ArrayList<Personnel>();
+		membres = new ArrayList<Personnel>();
 	}
 	
 	public void ajouteMembre(Personnel nouveau) {
